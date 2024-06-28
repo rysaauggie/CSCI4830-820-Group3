@@ -1,0 +1,30 @@
+main {
+    width: 100%
+    min-height: 100%
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+}
+
+.star-loc{
+    margin-top: 20px;
+}
+
+.end-loc{
+    margin-top: 20px;
+}
+
+.star-date{
+    margin-top: 20px;
+}
+
+.end-date{
+    margin-top: 20px;
+}
+
+.sub-but{
+    margin-top: 20px;
+}
