@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
   <main class="main">
+    <head>
+    <style>
+    body{
+        background-image: url("https://www.cfdc.org/wp-content/uploads/iStock-134707171.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;  
+         background-size: cover;
+}
+    </style>
   <head>
     <title> Flight Planner </title>
   </head>
     
     <body>
-    
     <h1> Pick your Flight Today </h1>
     <body>
 
@@ -40,7 +48,12 @@
         var longitude = position.coords.longitude;
         myMap(latitude, longitude);
       }
-      
+      function searchFlights() {
+        // Generate a random price between $60 and $500
+        var randomPrice = Math.floor(Math.random() * 400) + 60;  // Display the random price
+        document.getElementById("price").innerText = "Estimated Flight Price: $" + randomPrice;
+        event.preventDefault();   // Prevent form submission
+        }
       // Initialize the map when the page loads
       window.onload = getLocation;
       </script>
@@ -49,7 +62,7 @@
       
       </body>
 
-      <form>
+      <form onsubmit = "return searchFlights()">
         <label for="type"></label>
         <select id="type" name="type">
           <option value="oneway">One Way</option>
@@ -116,10 +129,8 @@
         <div class="sub-but">
         <input type="submit" value="Search">
         </div>
-
-        
       </form>
-    
+          <div id="price"></div>
     </body>
     </main>
 </html>
