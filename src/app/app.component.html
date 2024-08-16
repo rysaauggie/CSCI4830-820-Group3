@@ -54,12 +54,41 @@
         myMap(latitude, longitude);
       }
       function searchFlights() {
-        // Generate a random price between $60 and $500
-        var randomPrice = Math.floor(Math.random() * 400) + 60;  // Display the random price
-        document.getElementById("price").innerText = "Estimated Flight Price: $" + randomPrice;
         event.preventDefault();   // Prevent form submission
-        }
-      // Initialize the map when the page loads
+        // Generate a random price between $15o and $590
+        var randomPrice = Math.floor(Math.random() * 440) + 150;  // Display the random price
+        var randomPricee = Math.floor(Math.random() * 440) + 150; 
+        var randomPriceee = Math.floor(Math.random() * 440) + 150;  
+        var randomPriceeee= Math.floor(Math.random() * 200) + 60;   // bwtween $60 to $200
+        var mean= (randomPrice+randomPricee+randomPriceee+randomPriceeee)/4;   // bwtween $60 to $200
+
+        document.getElementById("price").innerText = "Estimated Average Flight Price: $" + mean;
+
+        document.getElementById("flightDetails").innerHTML =
+
+          //<hr> is a horizontal line 
+          //<strong> is a format text to be bold 
+
+          "<p><strong>Airline:</strong> United Airlines</p>" +   
+          "<p><strong>Departure Time:</strong> 8:00 AM</p>" +   
+          "<p><strong>Arrival Time:</strong> 10:30 AM</p>" +   
+          "<p><strong>Estimated Price:</strong> $" + randomPrice +  "</p><hr>" +
+
+          "<p><strong>Airline:</strong> Delta Airlines</p>" +  
+          "<p><strong>Departure Time:</strong> 9:15 PM</p>" +  
+          "<p><strong>Arrival Time:</strong> 12:45 AM</p>" +   
+          "<p><strong>Estimated Price:</strong> $" + randomPricee + "</p><hr>" +  
+
+          "<p><strong>Airline:</strong> American Airlines</p>" +   
+          "<p><strong>Departure Time:</strong> 4:30 PM</p>" +  
+          "<p><strong>Arrival Time:</strong> 6:30 PM</p>" +   
+          "<p><strong>Estimated Price:</strong> $" + randomPriceee + "</p><hr>" + 
+
+          "<p><strong>Airline:</strong> Southwest Airlines</p>" +   
+          "<p><strong>Departure Time:</strong> 4:45 AM</p>" + 
+          "<p><strong>Arrival Time:</strong> 11:15 AM</p>" + 
+          "<p><strong>Estimated Price:</strong> $" + randomPriceeee + "</p><hr>"; 
+      }      // Initialize the map when the page loads
       window.onload = getLocation;
       </script>
       
@@ -76,8 +105,8 @@
         
         <label for="class"></label>
         <select id="class" name="class">
-          <option value="econonmy">Economy</option>
-          <option value="econonmyplus">Economy Plus</option>
+          <option value="economy">Economy</option>
+          <option value="economyplus">Economy Plus</option>
           <option value="business">Business</option>
           <option value="first">First</option>
         </select>
@@ -135,7 +164,8 @@
         <input type="submit" value="Search">
         </div>
       </form>
-          <div id="price"></div>
+      <div id="price"></div>
+      <div id="flightDetails"></div>
     </body>
     </main>
 </html>
