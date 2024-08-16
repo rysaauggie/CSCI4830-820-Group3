@@ -5,20 +5,27 @@
     <style>
     body{
         background-image: url("https://www.cfdc.org/wp-content/uploads/iStock-134707171.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;  
-         background-size: cover;
-}
-    </style>
-  <head>
-    <title> Flight Planner </title>
-  </head>
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-size: cover; 
+    }   .hidden { display: none; } 
+    </style> 
+  <head> 
+    <title> Flight Planner </title> 
+  </head> 
     
     <body>
       <p id="date"></p>
       <script>
         document.getElementById('date').innerHTML = Date();
       </script>
+<script>
+  function hideEndDate() {  //
+    var flightType = document.getElementById("type").value; // value solves for type 
+    var a = document.getElementById("enddate");
+    a.classList.toggle("hidden", flightType != "roundtrip");
+  }
+</script>
 
     <h1> Pick your Flight Today </h1>
     <body>
@@ -88,8 +95,9 @@
           "<p><strong>Departure Time:</strong> 4:45 AM</p>" + 
           "<p><strong>Arrival Time:</strong> 11:15 AM</p>" + 
           "<p><strong>Estimated Price:</strong> $" + randomPriceeee + "</p><hr>"; 
-      
-      var min = [randomPrice, randomPricee, randomPriceee, randomPriceeee]
+          document.getElementById("return").innerHTML = "";  //resets the return flight that showed up when changing trip types more than 2 times
+
+      var min = [randomPrice, randomPricee, randomPriceee, randomPriceeee]   //minimum price is return ticket price 
       // Check if Round Trip is selected
       if (document.getElementById("type").value === "roundtrip") {
         document.getElementById("return").innerHTML = "";  
@@ -104,14 +112,14 @@
       // Initialize the map when the page loads
       window.onload = getLocation;
       </script>
-      
+      <! -- My public api link-->
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxp-ZguXCR6r-0IpLMRhX_FEAbd2IKptU&callback=myMap"></script>
       
       </body>
 
       <form onsubmit = "return searchFlights()">
         <label for="type"></label>
-        <select id="type" name="type">
+        <select id="type" name="type" onchange="hideEndDate()">
           <option value="oneway">One Way</option>
           <option value="roundtrip">Round Trip</option>
         </select>
@@ -162,13 +170,12 @@
 
 
         <div class="star-date">
-        <label for="startday">Start Date</label>
+        <label for="startday">Departure Date</label> <! --  -->
         <input type="date" id="startday">
         </div>
 
-
-        <div class="end-date">
-        <label for="endday">End Date</label>
+        <div id="enddate" class="hidden"> <! -- class= hidden auto hides-->
+        <label for="endday">Return Date</label> <! --  changed end to return  -->
         <input type="date" id="endday">
         </div>
 
