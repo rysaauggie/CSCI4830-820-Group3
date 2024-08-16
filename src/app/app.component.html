@@ -55,11 +55,11 @@
       }
       function searchFlights() {
         event.preventDefault();   // Prevent form submission
-        // Generate a random price between $15o and $590
-        var randomPrice = Math.floor(Math.random() * 440) + 150;  // Display the random price
-        var randomPricee = Math.floor(Math.random() * 440) + 150; 
-        var randomPriceee = Math.floor(Math.random() * 440) + 150;  
-        var randomPriceeee= Math.floor(Math.random() * 200) + 60;   // bwtween $60 to $200
+        // Generate a random price between $15o and $450
+        var randomPrice = Math.floor(Math.random() * 300) + 150;  // Display the random price
+        var randomPricee = Math.floor(Math.random() * 300) + 150; 
+        var randomPriceee = Math.floor(Math.random() * 300) + 150;  
+        var randomPriceeee= Math.floor(Math.random() * 155) + 60;   // bwtween $60 to $205
         var mean= (randomPrice+randomPricee+randomPriceee+randomPriceeee)/4;   // bwtween $60 to $200
 
         document.getElementById("price").innerText = "Estimated Average Flight Price: $" + mean;
@@ -88,7 +88,20 @@
           "<p><strong>Departure Time:</strong> 4:45 AM</p>" + 
           "<p><strong>Arrival Time:</strong> 11:15 AM</p>" + 
           "<p><strong>Estimated Price:</strong> $" + randomPriceeee + "</p><hr>"; 
-      }      // Initialize the map when the page loads
+      
+      var min = [randomPrice, randomPricee, randomPriceee, randomPriceeee]
+      // Check if Round Trip is selected
+      if (document.getElementById("type").value === "roundtrip") {
+        document.getElementById("return").innerHTML = "";  
+        // ^^^ Clear the return section for one-way trips since duplicates were a issue
+        document.getElementById("return").innerHTML += 
+          "<strong>The OnlyReturn Flight Possible:</strong><hr><p><strong>Return Airline:</strong> Frontier Airlines</p>" +  
+          "<p><strong>Departure Time:</strong> 5:00 PM</p>" +   
+          "<p><strong>Arrival Time:</strong> 7:30 PM</p>" +   
+          "<p><strong>Estimated Price:</strong> $" + Math.min.apply(Math, min) + "</p><hr>"
+        }
+      }
+      // Initialize the map when the page loads
       window.onload = getLocation;
       </script>
       
@@ -166,6 +179,7 @@
       </form>
       <div id="price"></div>
       <div id="flightDetails"></div>
+      <div id="return"></div>
     </body>
     </main>
 </html>
