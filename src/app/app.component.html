@@ -10,22 +10,22 @@
         background-size: cover; 
     }   .hidden { display: none; } 
     </style> 
-  <head> 
+ 
     <title> Flight Planner </title> 
-  </head> 
+	</head> 
     
     <body>
       <p id="date"></p>
       <script>
         document.getElementById('date').innerHTML = Date();
       </script>
-<script>
-  function hideEndDate() {  //
-    var flightType = document.getElementById("type").value; // value solves for type 
-    var a = document.getElementById("enddate");
-    a.classList.toggle("hidden", flightType != "roundtrip");
-  }
-</script>
+	<script>
+		function hideEndDate() {  //
+		var flightType = document.getElementById("type").value; // value solves for type 
+		var a = document.getElementById("enddate");
+		a.classList.toggle("hidden", flightType != "roundtrip");
+		}
+	</script>
 
     <h1> Pick your Flight Today </h1>
     <body>
@@ -116,8 +116,8 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxp-ZguXCR6r-0IpLMRhX_FEAbd2IKptU&callback=myMap"></script>
       
       </body>
-
-      <form onsubmit = "return searchFlights()">
+	  <form  action="http://localhost:3000/">
+      <!--<form onsubmit = "return searchFlights()"> --!>
         <label for="type"></label>
         <select id="type" name="type" onchange="hideEndDate()">
           <option value="oneway">One Way</option>
@@ -183,6 +183,11 @@
         <div class="sub-but">
         <input type="submit" value="Search">
         </div>
+
+		
+
+		
+		
       </form>
       <div id="price"></div>
       <div id="flightDetails"></div>
