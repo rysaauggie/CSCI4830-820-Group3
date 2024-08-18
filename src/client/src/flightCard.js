@@ -69,8 +69,7 @@ function FlightCard(props) {
                     <Card.Text>{flight.type}</Card.Text>
                     <Card.Text>{flight.startday}</Card.Text>
                     <Card.Text>{flight.endday}</Card.Text>
-                    <Button variant="danger" onClick={() => deleteFlight()}> Delete Flight</Button>
-                    <Button onClick={() => setEditing(true)}>Edit Flight</Button>
+                    
                     </>
                 :
                     <>
